@@ -1,0 +1,16 @@
+create database FyndDb;
+use FyndDb;
+CREATE TABLE `ITEM` (
+    `item_name` VARCHAR(100) NOT NULL,
+    `shade_name` VARCHAR(50),
+    `mrp` FLOAT,
+    PRIMARY KEY (`item_name`)
+);
+
+CREATE TABLE `SIZE_QUANTITY` (
+    `size` INT NOT NULL,
+    `quantity` INT NULL DEFAULT 0,
+    `item_name` VARCHAR(100) NOT NULL,
+    PRIMARY KEY (`size`, `item_name`),
+    CONSTRAINT `FK_ITEM` FOREIGN KEY (`item_name`) REFERENCES `ITEM` (`item_name`) ON DELETE CASCADE
+);
